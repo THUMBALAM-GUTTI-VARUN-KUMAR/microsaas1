@@ -1,0 +1,69 @@
+---
+// Footer Component
+import Logo from './Logo.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const prefix = currentLang === 'en' ? '' : `/${currentLang}`;
+---
+
+<footer class="w-full border-t border-[var(--border-color)] bg-[var(--bg-surface)] py-12 px-4 sm:px-6 mt-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Brand & About -->
+      <div class="md:col-span-2 space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-lg bg-[#171717] dark:bg-white text-white dark:text-black flex items-center justify-center font-bold text-sm shadow-sm overflow-hidden">
+            <Logo class="w-full h-full object-contain" />
+          </div>
+          <span class="font-bold text-base tracking-tight text-[var(--text-ink)]">mediasavee AI</span>
+        </div>
+        <p class="text-xs text-[var(--text-body)] max-w-md leading-relaxed">
+          {t('footer.about')}
+        </p>
+        <p class="text-[11px] text-[var(--text-mute)]">
+          {t('footer.disclaimer')}
+        </p>
+      </div>
+
+      <!-- Quick Tools -->
+      <div class="space-y-2.5">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-ink)]">{t('footer.tools')}</h4>
+        <ul class="space-y-1.5 text-xs text-[var(--text-body)]">
+          <li><a href={`${prefix}/video-downloader`} class="hover:text-[var(--text-ink)] transition-colors">Pinterest Video Downloader (MP4)</a></li>
+          <li><a href={`${prefix}/image-downloader`} class="hover:text-[var(--text-ink)] transition-colors">Pinterest Image Downloader</a></li>
+          <li><a href={`${prefix}/gif-downloader`} class="hover:text-[var(--text-ink)] transition-colors">Pinterest GIF Downloader</a></li>
+          <li><a href={`${prefix}/audio-extractor`} class="hover:text-[var(--text-ink)] transition-colors">Pinterest Audio Extractor (MP3)</a></li>
+          <li><a href={`${prefix}/pricing`} class="hover:text-[var(--text-ink)] transition-colors">Pro Pricing & Plans</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal & Info -->
+      <div class="space-y-2.5">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-ink)]">{t('footer.legal')}</h4>
+        <ul class="space-y-1.5 text-xs text-[var(--text-body)]">
+          <li><a href={`${prefix}/about`} class="hover:text-[var(--text-ink)] transition-colors">About Us</a></li>
+          <li><a href={`${prefix}/contact`} class="hover:text-[var(--text-ink)] transition-colors">Contact Us</a></li>
+          <li><a href={`${prefix}/legal/terms`} class="hover:text-[var(--text-ink)] transition-colors">Terms of Service</a></li>
+          <li><a href={`${prefix}/legal/privacy`} class="hover:text-[var(--text-ink)] transition-colors">Privacy Policy</a></li>
+          <li><a href="https://policy.pinterest.com/en/copyright" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--text-ink)] transition-colors">Pinterest Copyright Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-[var(--border-color)] flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--text-mute)] gap-4">
+      <p>© {new Date().getFullYear()} mediasavee AI (mediasavee.com). All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>500 MB Guardrail Active</span>
+        </span>
+        <span>•</span>
+        <span>Engineered with Geist Design</span>
+      </div>
+    </div>
+  </div>
+</footer>

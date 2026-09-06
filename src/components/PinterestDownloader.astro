@@ -1,0 +1,439 @@
+---
+import MediaResultCard from './MediaResultCard.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Props {
+  defaultPlaceholder?: string;
+  defaultType?: string;
+}
+
+const {
+  defaultPlaceholder = "Paste Pinterest Pin or Video URL (e.g. https://pin.it/... or https://pinterest.com/pin/...)",
+  defaultType = "all"
+} = Astro.props;
+---
+
+<div class="w-full max-w-3xl mx-auto px-4 sm:px-0">
+  <!-- Mode Switcher Tabs -->
+  <div class="flex items-center justify-center mb-4">
+    <div class="inline-flex p-1 rounded-xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)]">
+      <button 
+        id="tab-single" 
+        type="button" 
+        class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[var(--bg-surface)] text-[var(--text-ink)] shadow-sm transition-all"
+      >
+        {t('dl.single')}
+      </button>
+      <button 
+        id="tab-batch" 
+        type="button" 
+        class="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-medium text-[var(--text-mute)] hover:text-[var(--text-ink)] transition-all"
+      >
+        <span>{t('dl.batch')}</span>
+        <span class="text-[9px] font-bold uppercase tracking-wide px-1 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">Pro</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Single URL Form -->
+  <div id="single-form-wrapper" class="relative group">
+    <form id="pinterest-download-form" class="relative flex flex-col sm:flex-row items-center gap-2 p-2 sm:p-2.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] shadow-xl transition-all focus-within:border-neutral-400 dark:focus-within:border-neutral-600 focus-within:ring-4 focus-within:ring-neutral-200/50 dark:focus-within:ring-neutral-800/50">
+      
+      <!-- Pinterest URL Input -->
+      <div class="relative flex-1 w-full flex items-center pl-3">
+        <svg class="w-5 h-5 text-red-600 shrink-0 mr-2.5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.546.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+        </svg>
+        <input 
+          id="pin-url-input" 
+          type="url" 
+          name="url" 
+          required 
+          autocomplete="off" 
+          spellcheck="false"
+          placeholder={defaultPlaceholder}
+          class="w-full bg-transparent border-0 py-2.5 text-sm sm:text-base text-[var(--text-ink)] placeholder:text-[var(--text-mute)] focus:ring-0 focus:outline-none"
+        />
+
+        <!-- Paste Button inside input -->
+        <button 
+          id="btn-paste" 
+          type="button" 
+          title="Paste from clipboard" 
+          class="shrink-0 px-2.5 py-1 rounded-md text-xs font-medium text-[var(--text-mute)] hover:text-[var(--text-ink)] hover:bg-[var(--bg-surface-secondary)] transition-colors flex items-center gap-1 mr-1"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          <span class="hidden sm:inline">{t('dl.paste')}</span>
+        </button>
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        id="btn-submit" 
+        type="submit" 
+        class="w-full sm:w-auto btn-pill-primary px-6 py-3 font-semibold text-sm whitespace-nowrap shrink-0 shadow-md"
+      >
+        <span id="btn-submit-text">{t('dl.download')}</span>
+        <svg id="btn-submit-icon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+        <!-- Spinner -->
+        <svg id="btn-submit-spinner" class="hidden animate-spin w-4 h-4 text-white dark:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Batch URL Container (Pro Mode) -->
+  <div id="batch-form-wrapper" class="hidden">
+    <div class="rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-color)] p-5 shadow-xl space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h4 class="text-sm font-bold text-[var(--text-ink)]">{t('dl.batch.title')}</h4>
+          <p class="text-xs text-[var(--text-mute)]">{t('dl.batch.desc')}</p>
+        </div>
+        <span class="tech-badge px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-semibold text-[10px]">
+          PRO FEATURE
+        </span>
+      </div>
+
+      <textarea 
+        id="batch-urls-input" 
+        rows="4" 
+        placeholder="https://pin.it/example1&#10;https://www.pinterest.com/pin/123456/&#10;https://pin.it/example2"
+        class="w-full rounded-xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)] p-3 text-xs sm:text-sm font-mono text-[var(--text-ink)] placeholder:text-[var(--text-mute)] focus:ring-2 focus:ring-blue-500 focus:outline-none"
+      ></textarea>
+
+      <div class="flex items-center justify-between">
+        <span class="text-[11px] text-[var(--text-mute)]">Max 500 MB per downloaded file</span>
+        <button 
+          id="btn-batch-process" 
+          type="button" 
+          class="btn-pill-primary text-xs py-2 px-5"
+        >
+          {t('dl.batch.process')}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Loading Indicator -->
+  <div id="resolver-progress-wrapper" class="hidden mt-4">
+    <div class="w-full bg-neutral-200 dark:bg-neutral-800 rounded-full h-1.5 overflow-hidden">
+      <div id="resolver-progress-bar" class="bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 h-1.5 rounded-full transition-all duration-300 w-0"></div>
+    </div>
+    <p id="resolver-status-text" class="text-center text-xs font-mono text-[var(--text-mute)] mt-2">
+      Connecting to Pinterest...
+    </p>
+  </div>
+
+  <!-- Error Alert Container -->
+  <div id="resolver-error-alert" class="hidden mt-4 p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-red-800 dark:text-red-300 text-sm flex items-start gap-3">
+    <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+    </svg>
+    <div class="flex-1">
+      <p class="font-semibold text-xs uppercase tracking-wide">{t('dl.error.title')}</p>
+      <p id="resolver-error-message" class="text-xs mt-0.5">Could not resolve Pinterest link.</p>
+    </div>
+  </div>
+
+  <!-- Result Card Component -->
+  <MediaResultCard />
+</div>
+
+<script is:inline>
+  // Clean, native browser download trigger via server attachment
+  window.downloadMediaFile = (downloadUrl, filename, btn) => {
+    if (!btn) return;
+    const originalHtml = btn.innerHTML;
+    
+    btn.innerHTML = `
+      <svg class="animate-spin w-3.5 h-3.5 text-white dark:text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span>Saving...</span>
+    `;
+    btn.style.pointerEvents = 'none';
+
+    // Trigger download via hidden iframe to preserve exact filename from Content-Disposition header
+    let frame = document.getElementById('mediasavee-download-frame');
+    if (!frame) {
+      frame = document.createElement('iframe');
+      frame.id = 'mediasavee-download-frame';
+      frame.style.display = 'none';
+      document.body.appendChild(frame);
+    }
+    
+    frame.src = downloadUrl;
+
+    setTimeout(() => {
+      btn.innerHTML = `
+        <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>Downloaded!</span>
+      `;
+    }, 1200);
+
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.style.pointerEvents = 'auto';
+    }, 3200);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('pinterest-download-form');
+    const input = document.getElementById('pin-url-input');
+    const pasteBtn = document.getElementById('btn-paste');
+    const submitBtn = document.getElementById('btn-submit');
+    const submitText = document.getElementById('btn-submit-text');
+    const submitIcon = document.getElementById('btn-submit-icon');
+    const submitSpinner = document.getElementById('btn-submit-spinner');
+    
+    const progressWrapper = document.getElementById('resolver-progress-wrapper');
+    const progressBar = document.getElementById('resolver-progress-bar');
+    const statusText = document.getElementById('resolver-status-text');
+    
+    const errorAlert = document.getElementById('resolver-error-alert');
+    const errorMsg = document.getElementById('resolver-error-message');
+    
+    const resultContainer = document.getElementById('result-container');
+    const resultTitle = document.getElementById('result-title');
+    const resultDesc = document.getElementById('result-desc');
+    const resultPinId = document.getElementById('result-pin-id');
+    const resultAuthor = document.getElementById('result-author');
+    const resultCanonicalLink = document.getElementById('result-canonical-link');
+    const openOriginalLink = document.getElementById('btn-open-original');
+    
+    const imgPreview = document.getElementById('result-image-preview');
+    const videoPreview = document.getElementById('result-video-preview');
+    const audioPreview = document.getElementById('result-audio-preview');
+    const formatButtonsList = document.getElementById('format-buttons-list');
+    const newDownloadBtn = document.getElementById('btn-new-download');
+
+    // Tabs
+    const tabSingle = document.getElementById('tab-single');
+    const tabBatch = document.getElementById('tab-batch');
+    const singleWrapper = document.getElementById('single-form-wrapper');
+    const batchWrapper = document.getElementById('batch-form-wrapper');
+    const batchProcessBtn = document.getElementById('btn-batch-process');
+
+    if (tabSingle && tabBatch) {
+      tabSingle.addEventListener('click', () => {
+        tabSingle.classList.add('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+        tabSingle.classList.remove('text-[var(--text-mute)]');
+        tabBatch.classList.remove('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+        tabBatch.classList.add('text-[var(--text-mute)]');
+        singleWrapper.classList.remove('hidden');
+        batchWrapper.classList.add('hidden');
+      });
+
+      tabBatch.addEventListener('click', () => {
+        tabBatch.classList.add('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+        tabBatch.classList.remove('text-[var(--text-mute)]');
+        tabSingle.classList.remove('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+        tabSingle.classList.add('text-[var(--text-mute)]');
+        singleWrapper.classList.add('hidden');
+        batchWrapper.classList.remove('hidden');
+      });
+    }
+
+    if (batchProcessBtn) {
+      batchProcessBtn.addEventListener('click', () => {
+        const isPro = document.cookie.includes('isPro=true');
+        if (isPro) {
+          alert('Batch ZIP downloading is coming in V2! (This is a mock for V1). Thank you for testing the Pro flow.');
+        } else if (window.openProModal) {
+          window.openProModal();
+        } else {
+          alert('Batch ZIP downloading is a Pro feature.');
+        }
+      });
+    }
+
+    // Paste handling
+    if (pasteBtn && input) {
+      pasteBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            input.value = text.trim();
+            input.focus();
+          }
+        } catch (e) {
+          input.focus();
+        }
+      });
+    }
+
+    // Reset Form for new download
+    if (newDownloadBtn) {
+      newDownloadBtn.addEventListener('click', () => {
+        if (resultContainer) resultContainer.classList.add('hidden');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+        window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+      });
+    }
+
+    // Form Submission
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = (input.value || '').trim();
+        if (!url) return;
+
+        // Hide previous results / errors
+        if (errorAlert) errorAlert.classList.add('hidden');
+        if (resultContainer) resultContainer.classList.add('hidden');
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        submitIcon.classList.add('hidden');
+        submitSpinner.classList.remove('hidden');
+
+        progressWrapper.classList.remove('hidden');
+        progressBar.style.width = '20%';
+        statusText.textContent = 'Connecting to Pinterest...';
+
+        setTimeout(() => {
+          if (progressBar) progressBar.style.width = '55%';
+          if (statusText) statusText.textContent = 'Extracting original media metadata...';
+        }, 300);
+
+        try {
+          const res = await fetch('/api/resolve', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+          });
+
+          const data = await res.json();
+
+          if (progressBar) progressBar.style.width = '90%';
+          if (statusText) statusText.textContent = 'Preparing original media streams...';
+
+          if (!res.ok || !data.success) {
+            throw new Error(data.error || 'Failed to fetch media from Pinterest.');
+          }
+
+          // Populate Result Card
+          renderResultCard(data);
+
+          if (progressBar) progressBar.style.width = '100%';
+          setTimeout(() => {
+            progressWrapper.classList.add('hidden');
+            progressBar.style.width = '0%';
+          }, 350);
+
+        } catch (err) {
+          console.error(err);
+          progressWrapper.classList.add('hidden');
+          if (errorAlert && errorMsg) {
+            errorMsg.textContent = err.message || 'An unexpected error occurred while resolving the Pin.';
+            errorAlert.classList.remove('hidden');
+          }
+        } finally {
+          submitBtn.disabled = false;
+          submitText.classList.remove('hidden');
+          submitIcon.classList.remove('hidden');
+          submitSpinner.classList.add('hidden');
+        }
+      });
+    }
+
+    function renderResultCard(data) {
+      if (!resultContainer) return;
+
+      resultTitle.textContent = data.title || 'Pinterest Media';
+      resultDesc.textContent = data.description || `Original ${data.mediaType} content extracted from Pinterest.`;
+      resultPinId.textContent = `PIN #${data.pinId || 'N/A'}`;
+      resultAuthor.innerHTML = `By: <span class="font-medium text-[var(--text-body)]">${data.author?.name || 'Pinterest Creator'}</span>`;
+      
+      if (data.canonicalUrl) {
+        resultCanonicalLink.href = data.canonicalUrl;
+      }
+
+      // Best original image URL
+      const bestImage = data.originalImageUrl || data.formats.find(f => f.type === 'image')?.url || data.thumbnailUrl;
+
+      if (openOriginalLink && bestImage) {
+        openOriginalLink.href = bestImage;
+      }
+
+      // Previews
+      imgPreview.classList.add('hidden');
+      videoPreview.classList.add('hidden');
+      audioPreview.classList.add('hidden');
+
+      if (data.mediaType === 'video') {
+        const videoFormat = data.formats.find(f => f.type === 'video');
+        if (videoFormat && videoFormat.url) {
+          videoPreview.src = videoFormat.url;
+          videoPreview.poster = bestImage;
+          videoPreview.classList.remove('hidden');
+        } else {
+          imgPreview.src = bestImage;
+          imgPreview.classList.remove('hidden');
+        }
+      } else if (data.mediaType === 'audio') {
+        audioPreview.classList.remove('hidden');
+      } else {
+        imgPreview.src = bestImage;
+        imgPreview.onerror = () => {
+          imgPreview.src = `/api/download?url=${encodeURIComponent(bestImage)}&filename=preview.jpg`;
+        };
+        imgPreview.classList.remove('hidden');
+      }
+
+      // Render format buttons
+      formatButtonsList.innerHTML = '';
+      if (data.formats && data.formats.length > 0) {
+        data.formats.forEach((fmt) => {
+          const item = document.createElement('div');
+          item.className = 'flex items-center justify-between p-3 rounded-xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)] hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors';
+          
+          const filename = `mediasavee_${data.pinId || 'pin'}_${fmt.id}.${fmt.format.toLowerCase().includes('png') ? 'png' : fmt.format.toLowerCase().includes('webp') ? 'webp' : fmt.format.toLowerCase().includes('mp3') ? 'mp3' : fmt.format.toLowerCase().includes('mp4') ? 'mp4' : 'jpg'}`;
+
+          item.innerHTML = `
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg ${fmt.type === 'video' ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400' : fmt.type === 'audio' ? 'bg-pink-100 dark:bg-pink-950/60 text-pink-600 dark:text-pink-400' : 'bg-violet-100 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400'} flex items-center justify-center font-bold text-xs">
+                ${fmt.format}
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-[var(--text-ink)] leading-tight">${fmt.label}</p>
+                <p class="text-[11px] text-[var(--text-mute)]">${fmt.quality} • ${fmt.sizeFormatted}</p>
+              </div>
+            </div>
+            <button 
+              type="button"
+              onclick="window.downloadMediaFile('${fmt.downloadUrl}', '${filename}', this)"
+              class="btn-pill-primary text-xs py-1.5 px-3.5 cursor-pointer flex items-center gap-1.5 shadow-sm"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download</span>
+            </button>
+          `;
+          formatButtonsList.appendChild(item);
+        });
+      }
+
+      resultContainer.classList.remove('hidden');
+      resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>

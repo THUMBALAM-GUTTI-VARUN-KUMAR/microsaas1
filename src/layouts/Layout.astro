@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl, getLocalizedUrl, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any>;
+}
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const {
+  title = t('meta.title'),
+  description = t('meta.desc'),
+  canonicalUrl = "https://mediasavee.com",
+  ogImage = "https://mediasavee.com/og-image.png",
+  jsonLd
+} = Astro.props;
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "mediasavee AI",
+  "url": "https://mediasavee.com",
+  "description": "Next-generation Pinterest media downloader for videos (MP4), images, GIFs, and audio with clean interface and fast download delivery.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Pinterest Video Downloader (MP4)",
+    "High-Resolution Photo & Wallpaper Downloader",
+    "Pinterest GIF Downloader",
+    "Audio & Voiceover Extractor (MP3)",
+    "Clean, fast download delivery with 500 MB backend limit"
+  ]
+};
+
+const finalSchema = jsonLd || defaultSchema;
+---
+
+<!doctype html>
+<html lang={currentLang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="keywords" content="pinterest downloader, baixar video pinterest downloader, pinterest downloader video, pinterest downloader vídeo, video pinterest downloader, pinterest downloader pingrab, pinterest downloader hd, pinterest downloader savepin, pinterest downloader kostenlos" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- i18n hreflang Tags -->
+    {Object.keys(languages).map((lang) => (
+      <link rel="alternate" hreflang={lang} href={getLocalizedUrl(Astro.url, lang)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={getLocalizedUrl(Astro.url, 'en')} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="mediasavee" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts: Geist Sans & Geist Mono fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+
+    <!-- Theme Initialization Script -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="relative selection:bg-neutral-800 selection:text-white dark:selection:bg-white dark:selection:text-black overflow-x-hidden">
+    <div class="mesh-gradient-bg"></div>
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+  </body>
+</html>

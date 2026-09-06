@@ -1,0 +1,57 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const urlExamples = [
+  {
+    type: t('su.1.type'),
+    format: "https://pin.it/60m8aXr85",
+    description: t('su.1.desc')
+  },
+  {
+    type: t('su.2.type'),
+    format: "https://www.pinterest.com/pin/795377984215165340/",
+    description: t('su.2.desc')
+  },
+  {
+    type: t('su.3.type'),
+    format: "https://in.pinterest.com/pin/123456789/",
+    description: t('su.3.desc')
+  },
+  {
+    type: t('su.4.type'),
+    format: "https://www.pinterest.com/ideas/space-wallpaper/926295399832/",
+    description: t('su.4.desc')
+  }
+];
+---
+
+<section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
+  <div class="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.38 9.29-.09-.79-.17-2 .04-2.86.19-.77 1.22-5.18 1.22-5.18s-.31-.63-.31-1.55c0-1.45.84-2.54 1.89-2.54.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.49-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.27-1.95 3.27-4.77 0-2.49-1.79-4.24-4.35-4.24-2.96 0-4.7 2.22-4.7 4.51 0 .89.34 1.85.77 2.37.09.1.1.19.07.35-.08.33-.26 1.07-.3 1.22-.05.2-.16.24-.37.15-1.38-.64-2.24-2.65-2.24-4.27 0-3.48 2.53-6.67 7.29-6.67 3.83 0 6.8 2.73 6.8 6.38 0 3.8-2.4 6.87-5.73 6.87-1.12 0-2.17-.58-2.53-1.27l-.69 2.63c-.25.96-.92 2.16-1.37 2.89A9.998 9.998 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-[var(--text-ink)]">{t('su.title')}</h3>
+        <p class="text-xs text-[var(--text-mute)]">{t('su.desc')}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+      {urlExamples.map((item) => (
+        <div class="p-3 rounded-xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)]">
+          <p class="text-xs font-semibold text-[var(--text-ink)] mb-1">{item.type}</p>
+          <code class="text-[11px] font-mono text-blue-600 dark:text-blue-400 break-all block mb-1">
+            {item.format}
+          </code>
+          <p class="text-[11px] text-[var(--text-mute)] leading-tight">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

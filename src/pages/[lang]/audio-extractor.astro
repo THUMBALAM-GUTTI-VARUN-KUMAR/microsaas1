@@ -1,0 +1,10 @@
+---
+import AudioExtractor from '../audio-extractor.astro';
+import { languages } from '../../i18n/ui';
+
+const { lang } = Astro.params;
+if (!lang || !(lang in languages)) {
+  return Astro.redirect('/');
+}
+---
+<AudioExtractor />

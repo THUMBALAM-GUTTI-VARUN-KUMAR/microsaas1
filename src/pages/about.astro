@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<Layout 
+  title="About Us — mediasavee AI"
+  description="Learn about mediasavee AI, our mission to build the fastest, cleanest Pinterest media downloader on Cloudflare Edge."
+  canonicalUrl="https://mediasavee.com/about"
+>
+  <Navbar activePage="about" />
+
+  <main class="flex-1 py-16 px-4 sm:px-6 max-w-4xl mx-auto w-full">
+    <!-- Header Section -->
+    <div class="border-b border-[var(--border-color)] pb-8 mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-mono font-medium mb-4">
+        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+        <span>ABOUT MEDIASAVEE AI • EDGE MEDIA ENGINE</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[var(--text-ink)] tracking-tight mb-4">
+        Empowering Fast, Clean Media Extraction
+      </h1>
+      <p class="text-base sm:text-lg text-[var(--text-body)] leading-relaxed max-w-2xl">
+        mediasavee AI is engineered from the ground up to give creators, educators, and curators a modern, developer-grade way to save Pinterest media without intrusive ads or slow popups.
+      </p>
+    </div>
+
+    <!-- Core Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-surface)] shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h2 class="text-base font-bold text-[var(--text-ink)] mb-2">Cloudflare Edge Speed</h2>
+        <p class="text-xs text-[var(--text-body)] leading-relaxed">
+          Powered by edge serverless workers located in over 300 cities worldwide, delivering instant media analysis and accelerated transfer speeds.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-surface)] shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h2 class="text-base font-bold text-[var(--text-ink)] mb-2">Zero-Retention Privacy</h2>
+        <p class="text-xs text-[var(--text-body)] leading-relaxed">
+          We never store your downloaded media on disk or ask for Pinterest account credentials. Requests are resolved ephemerally in volatile memory.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-surface)] shadow-xs">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h2 class="text-base font-bold text-[var(--text-ink)] mb-2">500 MB Guardrail</h2>
+        <p class="text-xs text-[var(--text-body)] leading-relaxed">
+          Every file request is strictly monitored under our 500 MB limit to guarantee system stability and shield users from malicious payloads.
+        </p>
+      </div>
+    </div>
+
+    <!-- Narrative Sections -->
+    <div class="space-y-10 text-sm text-[var(--text-body)] leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">Our Story</h2>
+        <p>
+          Most social media downloaders on the internet are cluttered with deceptive download buttons, malware redirect traps, and broken video streams. We created mediasavee AI to prove that utility web tools can look and feel as refined as developer-grade platforms like Vercel and GitHub.
+        </p>
+        <p>
+          Whether you are an interior designer gathering high-resolution moodboards, a video editor looking for creative references, or someone saving tutorials for offline viewing on an airplane, mediasavee AI provides a clean, single-click solution.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">Supported Formats & Tools</h2>
+        <ul class="list-disc list-inside space-y-2 pl-2">
+          <li><strong>Videos (MP4):</strong> Clean full-HD 1080p and 720p streams extracted directly from Pinterest reels and video pins.</li>
+          <li><strong>Photos & Wallpapers:</strong> Original uncompressed source images in high-resolution JPG, PNG, and WebP.</li>
+          <li><strong>GIFs:</strong> Looping animated GIFs preserving full frame counts and transparent backgrounds.</li>
+          <li><strong>Audio Extractor (MP3):</strong> Dedicated 320kbps audio track extraction from recipes, tutorials, and speeches.</li>
+          <li><strong>Idea Pins & Carousels:</strong> Complete multi-slide gallery extraction in one pass.</li>
+        </ul>
+      </section>
+
+      <section class="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-surface-secondary)]/50 space-y-2">
+        <h2 class="text-base font-bold text-[var(--text-ink)]">Independent Platform Notice</h2>
+        <p class="text-xs text-[var(--text-mute)] leading-relaxed">
+          mediasavee AI is an independent web application and is not endorsed by, directly affiliated with, authorized by, or sponsored by Pinterest, Inc. All Pinterest trademarks and logos are the property of their respective owners. We encourage all users to respect creator copyright and use downloaded media strictly for lawful personal viewing.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

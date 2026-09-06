@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PinterestDownloader from '../components/PinterestDownloader.astro';
+import AdSlot from '../components/AdSlot.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
+---
+
+<Layout 
+  title="Pinterest Image & Wallpaper Downloader in Original Quality — mediasavee AI"
+  description="Download original high-resolution Pinterest photos, aesthetic wallpapers, and infographics in JPG, PNG, and WebP format without quality loss."
+  canonicalUrl="https://mediasavee.com/image-downloader"
+>
+  <Navbar activePage="image" />
+
+  <main class="flex-1">
+    <Hero 
+      badgeText="High-Resolution Photo Extraction"
+      titlePrefix="Download High-Res"
+      titleHighlight="Pinterest Photos & Wallpapers"
+      titleSuffix="in Original Quality"
+      description="Save full-resolution Pinterest aesthetic photos, infographics, artwork, and 4K wallpapers in JPG, PNG, or WebP format."
+    />
+
+    <section class="pb-10">
+      <PinterestDownloader defaultPlaceholder="Paste Pinterest Image or Wallpaper URL..." defaultType="image" />
+    </section>
+
+    <AdSlot slotType="leaderboard" class="mt-4 mb-8" />
+
+    <HowItWorks />
+
+    <section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
+      <div class="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">Original Image Quality Extraction</h2>
+        <p class="text-xs sm:text-sm text-[var(--text-body)] leading-relaxed">
+          Pinterest displays compressed thumbnails on its frontend. mediasavee AI automatically resolves the canonical raw asset from Pinterest's original CDN (`i.pinimg.com/originals/`) so you receive the highest resolution available.
+        </p>
+      </div>
+    </section>
+
+    <FaqAccordion />
+  </main>
+
+  <Footer />
+  <ProCheckoutModal />
+</Layout>

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PinterestDownloader from '../components/PinterestDownloader.astro';
+import AdSlot from '../components/AdSlot.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
+---
+
+<Layout 
+  title="Pinterest GIF Downloader — Save Looping Animated GIFs Free — mediasavee AI"
+  description="Download animated GIFs from Pinterest in original quality. Save looping animations directly to iOS, Android, Mac, and Windows devices."
+  canonicalUrl="https://mediasavee.com/gif-downloader"
+>
+  <Navbar activePage="gif" />
+
+  <main class="flex-1">
+    <Hero 
+      badgeText="Pinterest Animated GIF Downloader"
+      titlePrefix="Download Looping"
+      titleHighlight="Pinterest Animated GIFs"
+      titleSuffix="in Full Quality"
+      description="Save looping animated GIFs posted on Pinterest directly to your device with full frame animation and transparent backgrounds preserved."
+    />
+
+    <section class="pb-10">
+      <PinterestDownloader defaultPlaceholder="Paste Pinterest GIF URL (e.g. https://pin.it/...)" defaultType="gif" />
+    </section>
+
+    <AdSlot slotType="leaderboard" class="mt-4 mb-8" />
+
+    <HowItWorks />
+    <FaqAccordion />
+  </main>
+
+  <Footer />
+  <ProCheckoutModal />
+</Layout>

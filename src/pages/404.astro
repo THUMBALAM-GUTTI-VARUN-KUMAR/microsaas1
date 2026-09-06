@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+Astro.response.status = 404;
+Astro.response.statusText = 'Not Found';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const getUrl = (path: string) => {
+  return currentLang === 'en' ? path : `/${currentLang}${path === '/' ? '' : path}`;
+};
+
+const quickTools = [
+  {
+    name: t('nav.video'),
+    href: getUrl('/video-downloader'),
+    desc: 'Crisp 1080p MP4 videos',
+    icon: `<svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>`
+  },
+  {
+    name: t('nav.photo'),
+    href: getUrl('/image-downloader'),
+    desc: 'Original source JPG & PNG',
+    icon: `<svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`
+  },
+  {
+    name: t('nav.gif'),
+    href: getUrl('/gif-downloader'),
+    desc: 'Smooth animated loops',
+    icon: `<svg class="w-4 h-4 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/></svg>`
+  },
+  {
+    name: t('nav.audio'),
+    href: getUrl('/audio-extractor'),
+    desc: '320kbps MP3 voiceovers',
+    icon: `<svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>`
+  }
+];
+---
+
+<Layout
+  title={`${t('error.404.title')} (404) — mediasavee AI`}
+  description={t('error.404.desc')}
+  canonicalUrl={`https://mediasavee.com${getUrl('/404')}`}
+>
+  <Navbar />
+
+  <main class="flex-1 relative flex flex-col items-center justify-center px-4 sm:px-6 py-16 sm:py-24 text-center overflow-hidden">
+    <!-- Ambient Radial Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-amber-500/10 blur-3xl pointer-events-none -z-10 rounded-full"></div>
+
+    <div class="max-w-2xl mx-auto flex flex-col items-center">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-mono font-medium mb-6 animate-pulse">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span>{t('error.404.badge')}</span>
+      </div>
+
+      <!-- Large Gradient 404 Display -->
+      <div class="relative select-none mb-2">
+        <h1 class="text-8xl sm:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-neutral-900 via-neutral-700 to-neutral-400 dark:from-white dark:via-neutral-200 dark:to-neutral-600 leading-none">
+          404
+        </h1>
+      </div>
+
+      <!-- Headline & Explanatory Subtitle -->
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-ink)] mb-3">
+        {t('error.404.title')}
+      </h2>
+      <p class="text-sm sm:text-base text-[var(--text-body)] max-w-md mx-auto leading-relaxed mb-8">
+        {t('error.404.desc')}
+      </p>
+
+      <!-- Interactive Pinterest Quick Search/Download Input -->
+      <div class="w-full max-w-lg mb-8">
+        <form action={getUrl('/')} method="GET" class="relative flex items-center glass-panel rounded-full p-1.5 shadow-sm border border-[var(--border-color)] focus-within:ring-2 focus-within:ring-neutral-400 dark:focus-within:ring-neutral-600 transition-all">
+          <div class="pl-3.5 pr-1 text-[var(--text-mute)]">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+          </div>
+          <input 
+            type="url" 
+            name="url" 
+            placeholder={t('error.404.input_placeholder')} 
+            class="flex-1 bg-transparent px-2 text-xs sm:text-sm text-[var(--text-ink)] placeholder:text-[var(--text-mute)] outline-none min-w-0" 
+            required 
+          />
+          <button type="submit" class="btn-pill-primary text-xs sm:text-sm py-2 px-4 whitespace-nowrap shrink-0">
+            {t('error.404.input_btn')}
+          </button>
+        </form>
+      </div>
+
+      <!-- Primary & Secondary Navigation Actions -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <a href={getUrl('/')} class="btn-pill-primary">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>{t('error.500.btn_home')}</span>
+        </a>
+        <button onclick="if(window.history.length > 1){ window.history.back(); } else { window.location.href='/'; }" class="btn-pill-secondary cursor-pointer">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Go Back</span>
+        </button>
+      </div>
+
+      <!-- Quick Tool Links Grid -->
+      <div class="w-full max-w-xl border-t border-[var(--border-color)] pt-8">
+        <p class="text-xs font-semibold uppercase tracking-wider text-[var(--text-mute)] mb-4">
+          {t('error.404.quicktools')}
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          {quickTools.map((tool) => (
+            <a 
+              href={tool.href}
+              class="group flex flex-col items-center p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-surface)] hover:bg-[var(--bg-surface-secondary)] hover:border-neutral-400 dark:hover:border-neutral-600 transition-all text-center"
+            >
+              <div class="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform" set:html={tool.icon} />
+              <span class="text-xs font-semibold text-[var(--text-ink)] leading-tight">{tool.name}</span>
+              <span class="text-[10px] text-[var(--text-mute)] mt-0.5">{tool.desc}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,76 @@
+---
+interface Props {
+  slotType?: 'leaderboard' | 'rectangle' | 'in-feed';
+  adClient?: string;
+  adSlotId?: string;
+  class?: string;
+}
+
+const {
+  slotType = 'leaderboard',
+  adClient = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID || '',
+  adSlotId = '',
+  class: className = ''
+} = Astro.props;
+
+const isPro = Astro.cookies.get('isPro')?.value === 'true';
+
+const dimensions = {
+  'leaderboard': 'min-h-[90px] max-w-[728px]',
+  'rectangle': 'min-h-[250px] max-w-[300px]',
+  'in-feed': 'min-h-[100px] max-w-3xl'
+}[slotType];
+---
+
+<div class={`w-full mx-auto my-6 px-4 flex flex-col items-center ad-container ${className}`}>
+  <!-- Ad Label & Pro Opt-out -->
+  <div class="flex items-center justify-between w-full max-w-3xl mb-1.5 px-1 text-[11px] text-[var(--text-mute)]">
+    <span class="uppercase tracking-wider font-mono text-[10px]">{isPro ? 'Pro Workspace' : 'Advertisement'}</span>
+    {!isPro && (
+      <button 
+        onclick="window.openProModal && window.openProModal()" 
+        class="hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
+      >
+        ⚡ Remove Ads with Pro
+      </button>
+    )}
+  </div>
+
+  <!-- Ad Box Content / Placeholder -->
+  <div class={`w-full ${dimensions} rounded-xl border ${isPro ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-dashed border-[var(--border-color)] bg-[var(--bg-surface-secondary)]/50'} p-4 flex flex-col items-center justify-center text-center relative overflow-hidden group`}>
+    {isPro ? (
+      <div class="flex flex-col items-center justify-center space-y-1 py-2">
+        <div class="flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Ads Disabled (Pro Workspace)</span>
+        </div>
+        <p class="text-[11px] text-[var(--text-mute)] max-w-md">
+          Thank you for supporting mediasavee! Your workspace is 100% ad-free.
+        </p>
+      </div>
+    ) : adClient && adSlotId ? (
+      <ins 
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={adClient}
+        data-ad-slot={adSlotId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    ) : (
+      <div class="flex flex-col items-center justify-center space-y-1 py-2">
+        <div class="flex items-center gap-2 text-xs font-semibold text-[var(--text-body)]">
+          <svg class="w-4 h-4 text-[var(--text-mute)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Sponsor or Google Ad Placement</span>
+        </div>
+        <p class="text-[11px] text-[var(--text-mute)] max-w-md">
+          Configured for high-converting AdSense, Carbon, or Direct Brand Sponsors on the Free tier.
+        </p>
+      </div>
+    )}
+  </div>
+</div>

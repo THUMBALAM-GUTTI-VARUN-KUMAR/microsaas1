@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<Layout 
+  title="Terms of Service & Copyright Policy — mediasavee AI"
+  description="Read the Terms of Service, DMCA compliance, and fair-use guidelines for using mediasavee AI (mediasavee.com)."
+  canonicalUrl="https://mediasavee.com/legal/terms"
+>
+  <Navbar />
+
+  <main class="flex-1 py-16 px-4 sm:px-6 max-w-4xl mx-auto w-full">
+    <!-- Header Section -->
+    <div class="border-b border-[var(--border-color)] pb-8 mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-mono font-medium mb-4">
+        <span>LEGAL & COMPLIANCE • TERMS OF SERVICE</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[var(--text-ink)] tracking-tight mb-4">
+        Terms of Service
+      </h1>
+      <p class="text-xs sm:text-sm font-mono text-[var(--text-mute)]">
+        Effective Date: January 1, 2026 • Last Updated: September 2026
+      </p>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-8 text-sm text-[var(--text-body)] leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">1. Acceptance of Terms</h2>
+        <p>
+          By accessing, browsing, or using mediasavee AI ("mediasavee", "we", "our", or "the Service"), accessible at <a href="https://mediasavee.com" class="text-blue-600 hover:underline">mediasavee.com</a>, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must immediately discontinue use of the Service.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">2. Permitted Use & Intellectual Property Notice</h2>
+        <p>
+          mediasavee AI operates strictly as an automated media extraction and format-conversion utility for publicly accessible media. Our tool is intended exclusively for personal, educational, archival, and non-commercial fair use of content that you either own or have explicit legal authorization to view offline.
+        </p>
+        <p>
+          The fact that media is publicly visible on Pinterest does not mean that it is in the public domain. mediasavee AI does not grant copyright licenses, commercial reuse permissions, or ownership transfers for any downloaded videos, photos, GIFs, or audio tracks. You remain solely responsible for ensuring that your extraction and use of content complies with local copyright statutes and the <a href="https://policy.pinterest.com/en/terms-of-service" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Pinterest Terms of Service</a>.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">3. Strict Non-Affiliation Disclaimer</h2>
+        <p>
+          mediasavee.com is an independent third-party tool and is <strong>not affiliated, endorsed, certified, or sponsored by Pinterest, Inc.</strong> or any of its subsidiaries or affiliates. "Pinterest" and associated badges are registered trademarks of Pinterest, Inc. Reference to Pinterest is purely for descriptive purposes to identify compatibility with public URLs.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">4. Technical Guardrails & 500 MB Size Limit</h2>
+        <p>
+          To ensure fair server resource allocation and uninterrupted performance across our global Cloudflare Edge architecture, mediasavee AI enforces a hard processing limit of <strong>500 MB per file request</strong>. Requests attempting to exploit, flood, or bypass these limits via automated scrapers or bots without authorization are subject to automated rate-limiting or firewall blocking.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">5. Pro Subscriptions, Billing & Refunds</h2>
+        <p>
+          We offer an optional Pro upgrade that delivers an ad-free interface, prioritized queueing, and expanded batch download capabilities. Subscriptions are billed on a recurring monthly or annual basis until cancelled. You may cancel your subscription at any time via your checkout management link or by contacting our support team at <code class="font-mono text-xs text-blue-600">support@mediasavee.com</code>.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">6. DMCA & Copyright Takedown Procedure</h2>
+        <p>
+          We respect the intellectual property rights of copyright holders. mediasavee AI does not host, store, or republish media files. However, if you are a copyright owner or authorized representative and believe that any functionality on our platform infringes your copyright, please send a written notification to our designated agent at <a href="mailto:legal@mediasavee.com" class="text-blue-600 font-mono hover:underline">legal@mediasavee.com</a> with the following details:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-xs">
+          <li>Identification of the copyrighted work claimed to have been infringed;</li>
+          <li>The specific URL on our platform or description of the issue;</li>
+          <li>Your contact information (name, address, email, telephone);</li>
+          <li>A statement made under penalty of perjury that the information in the notification is accurate and that you are authorized to act on behalf of the copyright owner.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">7. Disclaimer of Warranties & Limitation of Liability</h2>
+        <p class="text-xs text-[var(--text-mute)] leading-relaxed">
+          THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. MEDIASAVEE AI EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL MEDIASAVEE AI BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SERVICE.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

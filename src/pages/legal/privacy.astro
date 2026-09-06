@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<Layout 
+  title="Privacy Policy — mediasavee AI"
+  description="Read the Privacy Policy for mediasavee AI (mediasavee.com). Learn how we enforce zero data retention and protect your privacy."
+  canonicalUrl="https://mediasavee.com/legal/privacy"
+>
+  <Navbar />
+
+  <main class="flex-1 py-16 px-4 sm:px-6 max-w-4xl mx-auto w-full">
+    <!-- Header Section -->
+    <div class="border-b border-[var(--border-color)] pb-8 mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-medium mb-4">
+        <span>DATA PROTECTION • ZERO-LOG ARCHITECTURE</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[var(--text-ink)] tracking-tight mb-4">
+        Privacy Policy
+      </h1>
+      <p class="text-xs sm:text-sm font-mono text-[var(--text-mute)]">
+        Effective Date: January 1, 2026 • Last Updated: September 2026
+      </p>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-8 text-sm text-[var(--text-body)] leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">1. Our Fundamental Commitment to Privacy</h2>
+        <p>
+          At mediasavee AI ("we", "our", or "the Service"), we believe that simple utility tools should not track, profile, or sell your personal data. Our architecture is built upon a <strong>Zero-Account, Zero-Credential, and Zero-Retention</strong> model. We do not ask for your name, phone number, social logins, or Pinterest credentials to use our free service.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">2. Ephemeral Media Processing</h2>
+        <p>
+          When you enter a Pinterest link into our downloader Workbench:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 pl-2 text-xs">
+          <li>Our backend edge function receives the link to extract direct public video, image, or audio CDN streams from Pinterest.</li>
+          <li>We <strong>do not store or archive downloaded media files</strong> on permanent hard drives or databases.</li>
+          <li>Once the file transfer to your client device begins or completes, the ephemeral stream buffer is discarded immediately from volatile server memory.</li>
+          <li>We do not maintain a browsing history or searchable directory of pins downloaded by individual users.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">3. Cookies, Telemetry & Advertising</h2>
+        <div class="space-y-2">
+          <h3 class="font-bold text-[var(--text-ink)]">Free Tier (Ad-Supported)</h3>
+          <p class="text-xs">
+            To cover server bandwidth and infrastructure costs, our free service may display non-intrusive banner advertisements provided by Google AdSense or certified ad exchange partners. These third-party vendors may use cookies or device identifiers to serve contextual advertisements. You can opt out of personalized advertising by visiting Google Ad Settings or aboutads.info.
+          </p>
+        </div>
+        <div class="space-y-2 mt-4">
+          <h3 class="font-bold text-[var(--text-ink)]">Pro Tier (100% Ad-Free)</h3>
+          <p class="text-xs">
+            For users who upgrade to mediasavee Pro, all third-party advertising scripts, tracker cookies, and ad networks are completely disabled. We only maintain a minimal session identifier necessary to recognize your active subscription status.
+          </p>
+        </div>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">4. Edge Security & Cloudflare Infrastructure</h2>
+        <p>
+          Our application is served over Cloudflare's global edge network. All communication between your web browser and our servers is secured via 256-bit TLS/HTTPS encryption. Cloudflare may process transient network request headers (such as IP address and user-agent string) solely for DDoS mitigation, rate-limiting, and automated bot prevention.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">5. User Rights Under GDPR & CCPA</h2>
+        <p>
+          Because we do not maintain accounts, passwords, or personal profiles for free users, we hold no personally identifiable records that can be linked to your identity. If you are a Pro subscriber and wish to exercise rights of access, rectification, or deletion of your billing records, you may email us at <a href="mailto:privacy@mediasavee.com" class="text-blue-600 font-mono hover:underline">privacy@mediasavee.com</a>.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">6. Contact for Privacy Inquiries</h2>
+        <p>
+          If you have questions, feedback, or concerns regarding our privacy practices, please contact our Data Protection Officer at:
+        </p>
+        <p class="font-mono text-xs text-[var(--text-ink)] bg-[var(--bg-surface-secondary)] p-3 rounded-lg border border-[var(--border-color)]">
+          mediasavee AI • Data Privacy Officer<br />
+          Email: <a href="mailto:privacy@mediasavee.com" class="text-blue-600 hover:underline">privacy@mediasavee.com</a><br />
+          Web: https://mediasavee.com/contact
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

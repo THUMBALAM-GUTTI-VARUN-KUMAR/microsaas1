@@ -1,0 +1,10 @@
+---
+import NotFound from '../404.astro';
+import { languages } from '../../i18n/ui';
+
+const { lang } = Astro.params;
+if (!lang || !(lang in languages)) {
+  return Astro.rewrite('/404');
+}
+---
+<NotFound />

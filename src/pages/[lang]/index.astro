@@ -1,0 +1,12 @@
+---
+import Home from '../index.astro';
+import { languages } from '../../i18n/ui';
+
+const { lang } = Astro.params;
+if (!lang || !(lang in languages)) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+---
+<Home />

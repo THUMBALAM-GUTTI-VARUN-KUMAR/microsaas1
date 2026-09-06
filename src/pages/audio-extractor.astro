@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PinterestDownloader from '../components/PinterestDownloader.astro';
+import AdSlot from '../components/AdSlot.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
+---
+
+<Layout 
+  title="Pinterest Audio & Music Extractor (MP3) — mediasavee AI"
+  description="Extract audio, voiceovers, and background music from Pinterest videos into high-quality 320kbps MP3 files online for free."
+  canonicalUrl="https://mediasavee.com/audio-extractor"
+>
+  <Navbar activePage="audio" />
+
+  <main class="flex-1">
+    <Hero 
+      badgeText="Audio & Music Extractor"
+      titlePrefix="Extract High Quality"
+      titleHighlight="Pinterest Audio to MP3"
+      titleSuffix="in 320 kbps"
+      description="Convert any Pinterest video, reel, or story audio track directly into an MP3 file with pristine sound quality and zero extra software needed."
+    />
+
+    <section class="pb-10">
+      <PinterestDownloader defaultPlaceholder="Paste Pinterest Video URL to extract MP3 audio..." defaultType="audio" />
+    </section>
+
+    <AdSlot slotType="leaderboard" class="mt-4 mb-8" />
+
+    <HowItWorks />
+    <FaqAccordion />
+  </main>
+
+  <Footer />
+  <ProCheckoutModal />
+</Layout>

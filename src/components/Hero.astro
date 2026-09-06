@@ -1,0 +1,57 @@
+---
+interface Props {
+  badgeText?: string;
+  titlePrefix?: string;
+  titleHighlight?: string;
+  titleSuffix?: string;
+  description?: string;
+}
+
+const {
+  badgeText = "Pinterest Media Engine v1.0 • 500 MB Guardrail",
+  titlePrefix = "Download Pinterest",
+  titleHighlight = "Videos, Photos & Audio",
+  titleSuffix = "in Original Quality",
+  description = "Extract videos (MP4), high-resolution wallpapers, GIFs, idea pins, and audio directly from Pinterest URLs. Optimized download delivery with zero spam popups."
+} = Astro.props;
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 sm:pb-16 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-900/5 dark:bg-white/5 border border-neutral-200 dark:border-neutral-800 text-[11px] font-medium text-[var(--text-mute)] mb-8 tracking-wide font-mono uppercase">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      Pinterest Media Engine v1.0 • 500 MB Limit
+    </div>
+    
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+      {t('hero.title')} <span class="text-gradient-brand">Videos,</span><br class="hidden sm:block"/> <span class="text-gradient-brand">Photos & Audio</span> in Original<br class="hidden sm:block"/> Quality
+    </h1>
+
+  <!-- Hero Subtitle -->
+  <p class="text-base sm:text-lg md:text-xl text-[var(--text-body)] max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+    {description}
+  </p>
+
+  <!-- Feature Pills -->
+  <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-xs text-[var(--text-mute)] font-medium">
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-color)]">
+      <svg class="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      MP4 Video (1080p / 720p)
+    </span>
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-color)]">
+      <svg class="w-3.5 h-3.5 text-violet-500" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      Original Photos & Wallpapers
+    </span>
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-color)]">
+      <svg class="w-3.5 h-3.5 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+      Audio Extraction (MP3)
+    </span>
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-color)]">
+      <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      500 MB Limit Enforced
+    </span>
+  </div>
+</section>

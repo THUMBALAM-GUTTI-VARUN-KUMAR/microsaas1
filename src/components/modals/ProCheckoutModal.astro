@@ -1,0 +1,128 @@
+---
+// ProCheckoutModal Component
+---
+
+<div id="pro-checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+  <div class="relative w-full max-w-lg rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-6 sm:p-8 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+    <!-- Close Button -->
+    <button 
+      id="modal-close-btn" 
+      type="button" 
+      class="absolute top-5 right-5 p-1.5 rounded-full text-[var(--text-mute)] hover:text-[var(--text-ink)] hover:bg-[var(--bg-surface-secondary)] transition-colors"
+      aria-label="Close modal"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Modal Header -->
+    <div class="mb-6">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-3 border border-blue-200 dark:border-blue-900">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <span>mediasavee AI Pro</span>
+      </div>
+      <h3 class="text-xl sm:text-2xl font-bold text-[var(--text-ink)]">
+        Upgrade to Pro Workspace
+      </h3>
+      <p class="text-xs sm:text-sm text-[var(--text-body)] mt-1">
+        Unlock 100% ad-free downloads, batch multi-link ZIP exports, and priority server queues.
+      </p>
+    </div>
+
+    <!-- Plan Selector Radio -->
+    <div class="space-y-3 mb-6">
+      <label class="flex items-center justify-between p-4 rounded-2xl border-2 border-neutral-900 dark:border-white bg-[var(--bg-surface-secondary)]/50 cursor-pointer">
+        <div class="flex items-center gap-3">
+          <input type="radio" name="pro_plan" value="monthly" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+          <div>
+            <p class="text-sm font-bold text-[var(--text-ink)]">Monthly Pro</p>
+            <p class="text-xs text-[var(--text-mute)]">Flexible month-to-month, cancel anytime</p>
+          </div>
+        </div>
+        <span class="text-base font-extrabold text-[var(--text-ink)]">$9<span class="text-xs text-[var(--text-mute)] font-normal">/mo</span></span>
+      </label>
+
+      <label class="flex items-center justify-between p-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-surface)] hover:border-neutral-400 dark:hover:border-neutral-600 cursor-pointer">
+        <div class="flex items-center gap-3">
+          <input type="radio" name="pro_plan" value="yearly" class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+          <div>
+            <div class="flex items-center gap-1.5">
+              <p class="text-sm font-bold text-[var(--text-ink)]">Annual Pro</p>
+              <span class="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">Save 25%</span>
+            </div>
+            <p class="text-xs text-[var(--text-mute)]">Billed annually at $79/year</p>
+          </div>
+        </div>
+        <span class="text-base font-extrabold text-[var(--text-ink)]">$6.58<span class="text-xs text-[var(--text-mute)] font-normal">/mo</span></span>
+      </label>
+    </div>
+
+    <!-- Checkout Features -->
+    <div class="p-3.5 rounded-xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)] text-xs text-[var(--text-body)] space-y-1.5 mb-6">
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span>Instant ad removal across all pages</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span>Batch download up to 20 pins in 1 ZIP</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span>Secure checkout via Stripe / LemonSqueezy</span>
+      </div>
+    </div>
+
+    <!-- Checkout Action Button -->
+    <button 
+      id="btn-stripe-checkout" 
+      type="button" 
+      class="w-full btn-pill-primary py-3 font-semibold text-sm shadow-xl flex items-center justify-center gap-2"
+    >
+      <svg class="w-4 h-4 text-white dark:text-black" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+      <span>Proceed to Secure Checkout</span>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  window.openProModal = () => {
+    const modal = document.getElementById('pro-checkout-modal');
+    if (modal) modal.classList.remove('hidden');
+  };
+
+  window.closeProModal = () => {
+    const modal = document.getElementById('pro-checkout-modal');
+    if (modal) modal.classList.add('hidden');
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('modal-close-btn');
+    const modal = document.getElementById('pro-checkout-modal');
+    const checkoutBtn = document.getElementById('btn-stripe-checkout');
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', window.closeProModal);
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) window.closeProModal();
+      });
+    }
+
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', () => {
+        checkoutBtn.textContent = 'Redirecting to Stripe...';
+        setTimeout(() => {
+          alert('Simulated Stripe checkout: Activating Pro Mode! ⚡');
+          document.cookie = "isPro=true; path=/; max-age=3600";
+          window.location.reload();
+        }, 800);
+      });
+    }
+  });
+</script>

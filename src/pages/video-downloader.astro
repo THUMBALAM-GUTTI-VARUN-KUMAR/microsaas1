@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PinterestDownloader from '../components/PinterestDownloader.astro';
+import AdSlot from '../components/AdSlot.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
+---
+
+<Layout 
+  title="Pinterest Video Downloader (MP4) in 1080p Full HD — mediasavee AI"
+  description="Easily download Pinterest videos and reels in high-quality 1080p & 720p MP4. Free online Pinterest video converter with 500 MB backend limit."
+  canonicalUrl="https://mediasavee.com/video-downloader"
+>
+  <Navbar activePage="video" />
+
+  <main class="flex-1">
+    <Hero 
+      badgeText="Pinterest Video to MP4 Engine"
+      titlePrefix="Fast Online"
+      titleHighlight="Pinterest Video Downloader"
+      titleSuffix="in Full HD"
+      description="Convert and save Pinterest videos, reels, and video pins to MP4 with original audio. Fast stream delivery, zero spam ads, and 500 MB limit."
+    />
+
+    <section class="pb-10">
+      <PinterestDownloader defaultPlaceholder="Paste Pinterest Video URL (e.g. https://pin.it/... or https://pinterest.com/pin/...)" defaultType="video" />
+    </section>
+
+    <AdSlot slotType="leaderboard" class="mt-4 mb-8" />
+
+    <HowItWorks />
+
+    <section class="py-12 px-4 sm:px-6 max-w-4xl mx-auto">
+      <div class="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-[var(--text-ink)]">Why Choose mediasavee AI for Pinterest Videos?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-[var(--text-body)]">
+          <div class="p-4 rounded-2xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)]">
+            <h3 class="font-bold text-[var(--text-ink)] mb-1">Direct 1080p / 720p Stream</h3>
+            <p>We extract original MP4 video streams without re-compressing or degrading video bitrates.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-[var(--bg-surface-secondary)] border border-[var(--border-color)]">
+            <h3 class="font-bold text-[var(--text-ink)] mb-1">Audio Preserved</h3>
+            <p>Full stereo sound is preserved in the downloaded MP4 file, with an option to extract pure MP3 audio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FaqAccordion />
+  </main>
+
+  <Footer />
+  <ProCheckoutModal />
+</Layout>

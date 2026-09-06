@@ -1,0 +1,198 @@
+---
+// PricingTiers Component
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section id="pricing" class="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+  <div class="text-center max-w-2xl mx-auto mb-10">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-semibold mb-3">
+      <span>{t('price.badge')}</span>
+    </div>
+    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-ink)] mb-3">
+      {t('price.title')}
+    </h2>
+    <p class="text-sm sm:text-base text-[var(--text-body)]">
+      {t('price.desc')}
+    </p>
+
+    <!-- Billing Interval Toggle -->
+    <div class="inline-flex items-center gap-3 p-1 rounded-full bg-[var(--bg-surface-secondary)] border border-[var(--border-color)] mt-6">
+      <button 
+        id="toggle-monthly" 
+        type="button" 
+        class="px-4 py-1.5 rounded-full text-xs font-semibold bg-[var(--bg-surface)] text-[var(--text-ink)] shadow-sm transition-all"
+      >
+        {t('price.monthly')}
+      </button>
+      <button 
+        id="toggle-yearly" 
+        type="button" 
+        class="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-[var(--text-mute)] hover:text-[var(--text-ink)] transition-all"
+      >
+        <span>{t('price.yearly')}</span>
+        <span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
+          {t('price.promo')}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Pricing Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
+    <!-- Free Tier Card -->
+    <div class="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-surface)] p-8 flex flex-col justify-between shadow-sm">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-[var(--text-ink)]">{t('price.free.title')}</h3>
+          <span class="tech-badge px-2.5 py-0.5 rounded-full bg-[var(--bg-surface-secondary)] text-[var(--text-mute)] border border-[var(--border-color)] text-xs">
+            {t('price.free.badge')}
+          </span>
+        </div>
+        <p class="text-xs sm:text-sm text-[var(--text-mute)] mb-6">
+          {t('price.free.desc')}
+        </p>
+
+        <!-- Price Display -->
+        <div class="flex items-baseline gap-1 mb-6">
+          <span class="text-4xl font-extrabold text-[var(--text-ink)]">{t('price.free.price')}</span>
+          <span class="text-xs text-[var(--text-mute)] font-medium">{t('price.free.period')}</span>
+        </div>
+
+        <!-- Features List -->
+        <ul class="space-y-3 text-xs sm:text-sm text-[var(--text-body)] mb-8">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.free.f1')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.free.f2')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.free.f3')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.free.f4')}</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-[var(--text-mute)]">
+            <svg class="w-4 h-4 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>{t('price.free.f5')}</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-[var(--text-mute)]">
+            <svg class="w-4 h-4 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span>{t('price.free.f6')}</span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="/" class="btn-pill-secondary w-full text-center py-2.5">
+        {t('price.free.btn')}
+      </a>
+    </div>
+
+    <!-- Pro Tier Card (Highlighted) -->
+    <div class="relative rounded-3xl border-2 border-neutral-900 dark:border-white bg-[var(--bg-surface)] p-8 flex flex-col justify-between shadow-xl">
+      <!-- Most Popular Badge -->
+      <div class="absolute -top-3.5 right-6 px-3 py-0.5 rounded-full bg-[#171717] dark:bg-white text-white dark:text-black text-[10px] font-bold tracking-wider uppercase shadow-md">
+        {t('price.pro.pop')}
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xl font-bold text-[var(--text-ink)]">{t('price.pro.title')}</h3>
+          <span class="tech-badge px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-semibold">
+            {t('price.pro.badge')}
+          </span>
+        </div>
+        <p class="text-xs sm:text-sm text-[var(--text-mute)] mb-6">
+          {t('price.pro.desc')}
+        </p>
+
+        <!-- Price Display -->
+        <div class="flex items-baseline gap-1 mb-6">
+          <span 
+            id="price-amount" 
+            class="text-4xl font-extrabold text-[var(--text-ink)]" 
+            data-price-monthly={t('price.pro.price')}
+            data-price-yearly={t('price.pro.price.yearly')}
+          >{t('price.pro.price')}</span>
+          <span 
+            id="price-period" 
+            class="text-xs text-[var(--text-mute)] font-medium" 
+            data-period-monthly={t('price.pro.period')}
+            data-period-yearly={t('price.pro.period.yearly')}
+          >{t('price.pro.period')}</span>
+        </div>
+
+        <!-- Features List -->
+        <ul class="space-y-3 text-xs sm:text-sm text-[var(--text-body)] mb-8">
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="font-semibold text-[var(--text-ink)]">{t('price.pro.f1')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="font-semibold text-[var(--text-ink)]">{t('price.pro.f2')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.pro.f3')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.pro.f4')}</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>{t('price.pro.f5')}</span>
+          </li>
+        </ul>
+      </div>
+
+      <button 
+        onclick="window.openProModal && window.openProModal()" 
+        type="button" 
+        class="btn-pill-primary w-full text-center py-3 shadow-lg font-semibold"
+      >
+        {t('price.pro.btn')}
+      </button>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const toggleMonthly = document.getElementById('toggle-monthly');
+  const toggleYearly = document.getElementById('toggle-yearly');
+  const priceAmount = document.getElementById('price-amount');
+  const pricePeriod = document.getElementById('price-period');
+
+  if (toggleMonthly && toggleYearly && priceAmount && pricePeriod) {
+    const monthlyPrice = priceAmount.getAttribute('data-price-monthly');
+    const yearlyPrice = priceAmount.getAttribute('data-price-yearly');
+    const monthlyPeriod = pricePeriod.getAttribute('data-period-monthly');
+    const yearlyPeriod = pricePeriod.getAttribute('data-period-yearly');
+    
+    toggleMonthly.addEventListener('click', () => {
+      toggleMonthly.classList.add('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+      toggleMonthly.classList.remove('text-[var(--text-mute)]');
+      toggleYearly.classList.remove('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+      toggleYearly.classList.add('text-[var(--text-mute)]');
+      priceAmount.textContent = monthlyPrice;
+      pricePeriod.textContent = monthlyPeriod;
+    });
+
+    toggleYearly.addEventListener('click', () => {
+      toggleYearly.classList.add('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+      toggleYearly.classList.remove('text-[var(--text-mute)]');
+      toggleMonthly.classList.remove('bg-[var(--bg-surface)]', 'text-[var(--text-ink)]', 'shadow-sm', 'font-semibold');
+      toggleMonthly.classList.add('text-[var(--text-mute)]');
+      priceAmount.textContent = yearlyPrice;
+      pricePeriod.textContent = yearlyPeriod;
+    });
+  }
+</script>

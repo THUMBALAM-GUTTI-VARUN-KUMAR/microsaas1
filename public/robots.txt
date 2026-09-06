@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Disallow private and API paths
+Disallow: /api/
+Disallow: /api/*
+
+# Allow all major language variants
+Allow: /es/
+Allow: /ja/
+Allow: /fr/
+Allow: /de/
+Allow: /pt/
+Allow: /ko/
+Allow: /it/
+
+# Sitemap location
+Sitemap: https://mediasavee.com/sitemap.xml

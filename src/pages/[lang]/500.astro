@@ -1,0 +1,10 @@
+---
+import ServerError from '../500.astro';
+import { languages } from '../../i18n/ui';
+
+const { lang } = Astro.params;
+if (!lang || !(lang in languages)) {
+  return Astro.rewrite('/500');
+}
+---
+<ServerError />

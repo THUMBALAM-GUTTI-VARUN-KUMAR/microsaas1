@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PinterestDownloader from '../components/PinterestDownloader.astro';
+import AdSlot from '../components/AdSlot.astro';
+import PinterestFeatures from '../components/PinterestFeatures.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import PricingTiers from '../components/PricingTiers.astro';
+import SupportedUrls from '../components/SupportedUrls.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import Footer from '../components/Footer.astro';
+import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
+import SeoContent from '../components/SeoContent.astro';
+---
+
+<Layout 
+  title="mediasavee AI — Free Pinterest Video, Image & Audio Downloader"
+  description="Download Pinterest videos (MP4), high-resolution photos, GIFs, idea pins, carousels, and MP3 audio in original quality. Clean, ad-light interface with 500 MB limit."
+>
+  <Navbar activePage="home" />
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <Hero 
+      badgeText="Pinterest Media Engine v1.0 • 500 MB Limit"
+      titlePrefix="Download Pinterest"
+      titleHighlight="Videos, Photos & Audio"
+      titleSuffix="in Original Quality"
+      description="Extract videos (MP4), high-resolution wallpapers, GIFs, idea pins, and audio directly from Pinterest URLs. Optimized download delivery with zero spam popups."
+    />
+
+    <!-- Interactive Downloader Workbench -->
+    <section class="pb-10">
+      <PinterestDownloader />
+    </section>
+
+    <!-- Top Banner Ad Placement (Free Tier) -->
+    <AdSlot slotType="leaderboard" class="mt-4 mb-8" />
+
+    <!-- Features Section -->
+    <PinterestFeatures />
+
+    <!-- How It Works Step-by-Step -->
+    <HowItWorks />
+
+    <!-- Middle In-Feed Ad Placement -->
+    <AdSlot slotType="in-feed" class="my-8" />
+
+    <!-- Pricing Tiers (Free vs Pro) -->
+    <PricingTiers />
+
+    <!-- Supported URL Formats Cheat Sheet -->
+    <SupportedUrls />
+
+    <!-- SEO Optimized Content -->
+    <SeoContent />
+
+    <!-- FAQ Accordion -->
+    <FaqAccordion />
+  </main>
+
+  <Footer />
+  <ProCheckoutModal />
+</Layout>
