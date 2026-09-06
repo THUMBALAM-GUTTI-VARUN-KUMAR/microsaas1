@@ -6,11 +6,9 @@ import PinterestDownloader from '../components/PinterestDownloader.astro';
 import AdSlot from '../components/AdSlot.astro';
 import PinterestFeatures from '../components/PinterestFeatures.astro';
 import HowItWorks from '../components/HowItWorks.astro';
-import PricingTiers from '../components/PricingTiers.astro';
 import SupportedUrls from '../components/SupportedUrls.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import Footer from '../components/Footer.astro';
-import ProCheckoutModal from '../components/modals/ProCheckoutModal.astro';
 import SeoContent from '../components/SeoContent.astro';
 ---
 
@@ -47,8 +45,7 @@ import SeoContent from '../components/SeoContent.astro';
     <!-- Middle In-Feed Ad Placement -->
     <AdSlot slotType="in-feed" class="my-8" />
 
-    <!-- Pricing Tiers (Free vs Pro) -->
-    <PricingTiers />
+
 
     <!-- Supported URL Formats Cheat Sheet -->
     <SupportedUrls />
@@ -61,5 +58,4 @@ import SeoContent from '../components/SeoContent.astro';
   </main>
 
   <Footer />
-  <ProCheckoutModal />
 </Layout>
