@@ -6,18 +6,7 @@ interface RateLimitRecord {
 
 const rateLimitMap = new Map<string, RateLimitRecord>();
 
-// Clean up stale entries every 5 minutes
-if (typeof setInterval !== 'undefined') {
-  setInterval(() => {
-    const now = Date.now();
-    for (const [ip, record] of rateLimitMap.entries()) {
-      record.timestamps = record.timestamps.filter(t => now - t < 60_000);
-      if (record.timestamps.length === 0) {
-        rateLimitMap.delete(ip);
-      }
-    }
-  }, 5 * 60 * 1000);
-}
+// Cleanup is handled lazily inside checkRateLimit to avoid global scope intervals
 
 /**
  * Checks if a given IP exceeds max requests within the sliding window.

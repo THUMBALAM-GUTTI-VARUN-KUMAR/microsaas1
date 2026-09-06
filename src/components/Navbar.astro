@@ -5,6 +5,7 @@ interface Props {
 import Logo from './Logo.astro';
 import LanguagePicker from './LanguagePicker.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/astro/components";
 
 const { activePage = 'home' } = Astro.props;
 const currentLang = getLangFromUrl(Astro.url);
@@ -97,16 +98,21 @@ const getUrl = (path: string) => {
         </svg>
       </button>
 
-      <!-- Pro CTA Button -->
-      <button 
-        onclick="window.openProModal && window.openProModal()"
-        class="hidden sm:inline-flex btn-pill-primary text-xs"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
-        <span>Upgrade to Pro</span>
-      </button>
+      <SignedOut>
+        <!-- Pro CTA Button (Now acts as Login trigger for non-auth users) -->
+        <SignInButton mode="modal">
+          <button class="hidden sm:inline-flex btn-pill-primary text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <span>Upgrade to Pro</span>
+          </button>
+        </SignInButton>
+      </SignedOut>
+
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
 
       <!-- Mobile Menu Toggle Button -->
       <button 
@@ -131,9 +137,18 @@ const getUrl = (path: string) => {
     <a href={getUrl('/audio-extractor')} class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-body)] hover:bg-[var(--bg-surface-secondary)]">{t('nav.audio')}</a>
     <a href={getUrl('/pricing')} class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 dark:text-blue-400 hover:bg-[var(--bg-surface-secondary)]">{t('nav.pricing')}</a>
     <div class="pt-2">
-      <button onclick="window.openProModal && window.openProModal()" class="w-full btn-pill-primary text-sm py-2">
-        Upgrade to Pro (Ad-Free)
-      </button>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button class="w-full btn-pill-primary text-sm py-2">
+            Upgrade to Pro (Ad-Free)
+          </button>
+        </SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <div class="flex items-center justify-center p-2">
+          <UserButton showName={true} />
+        </div>
+      </SignedIn>
     </div>
   </div>
 </header>

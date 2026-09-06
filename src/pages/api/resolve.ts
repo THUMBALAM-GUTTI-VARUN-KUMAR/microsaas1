@@ -4,25 +4,25 @@ import { checkRateLimit } from '../../lib/rate-limiter';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request, clientAddress }) => {
-  // IP Rate Limiting (30 requests/minute per IP)
-  const clientIp = clientAddress || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1';
-  const rateLimit = checkRateLimit(clientIp, 30, 60_000);
-
-  if (!rateLimit.allowed) {
-    return new Response(JSON.stringify({ 
-      success: false, 
-      error: 'Rate limit exceeded. Please wait a minute before making more download requests.' 
-    }), {
-      status: 429,
-      headers: { 
-        'Content-Type': 'application/json',
-        'Retry-After': '60'
-      }
-    });
-  }
-
+export const POST: APIRoute = async ({ request }) => {
   try {
+    // IP Rate Limiting (30 requests/minute per IP)
+    const clientIp = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1';
+    const rateLimit = checkRateLimit(clientIp, 30, 60_000);
+
+    if (!rateLimit.allowed) {
+      return new Response(JSON.stringify({ 
+        success: false, 
+        error: 'Rate limit exceeded. Please wait a minute before making more download requests.' 
+      }), {
+        status: 429,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Retry-After': '60'
+        }
+      });
+    }
+
     const body = await request.json();
     const rawUrl = String(body.url || '').trim();
 
@@ -44,7 +44,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     // Check optional Worker Proxy switch
-    const workerProxyUrl = process.env.RESOLVER_WORKER_URL;
+    const workerProxyUrl = import.meta.env.RESOLVER_WORKER_URL;
     if (workerProxyUrl) {
       try {
         const workerRes = await fetch(`${workerProxyUrl}?url=${encodeURIComponent(rawUrl)}`, {
@@ -85,7 +85,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       success: false,
       error: err.message || 'Unable to resolve the requested Pin. It might be private or deleted.'
     }), {
-      status: 500,
+      status: 400,
       headers: { 'Content-Type': 'application/json' }
     });
   }

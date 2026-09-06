@@ -1,3 +1,4 @@
+import clerk from '@clerk/astro';
 // @ts-check
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
@@ -8,6 +9,7 @@ const useNode = process.env.USE_NODE_ADAPTER === 'true';
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [clerk()],
   output: 'server',
   adapter: useNode ? node({ mode: 'standalone' }) : cloudflare({ imageService: 'cloudflare' }),
   vite: {
