@@ -13,10 +13,12 @@
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.10",
     "@clerk/astro": "^4.1.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.1",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
   },
   "allowScripts": {
     "esbuild": true

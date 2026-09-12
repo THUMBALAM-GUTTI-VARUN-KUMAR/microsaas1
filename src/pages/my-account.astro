@@ -1,0 +1,40 @@
+---
+import { UserProfile } from "@clerk/astro/components";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const authData = Astro.locals.auth();
+const isSignedIn = !!authData?.userId;
+
+if (!isSignedIn) {
+  return Astro.redirect('/sign-in');
+}
+---
+
+<Layout 
+  title="My Account - mediasavee"
+  description="Manage your mediasavee account."
+>
+  <Navbar activePage="account" />
+  
+  <main class="flex-1 w-full max-w-7xl mx-auto px-4 py-6 sm:py-12 flex flex-col items-center">
+    <div class="w-full max-w-4xl mb-6 flex justify-start">
+      <a href="/" class="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-mute)] hover:text-[var(--text-ink)] transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Home
+      </a>
+    </div>
+    <div class="w-full flex justify-center overflow-x-hidden">
+      <UserProfile appearance={{ elements: { rootBox: "w-full sm:w-auto" } }} />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

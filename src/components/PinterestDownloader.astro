@@ -164,16 +164,14 @@ const {
     `;
     btn.style.pointerEvents = 'none';
 
-    // Trigger download via hidden iframe to preserve exact filename from Content-Disposition header
-    let frame = document.getElementById('mediasavee-download-frame');
-    if (!frame) {
-      frame = document.createElement('iframe');
-      frame.id = 'mediasavee-download-frame';
-      frame.style.display = 'none';
-      document.body.appendChild(frame);
-    }
-    
-    frame.src = downloadUrl;
+    // Trigger download via anchor tag for better mobile compatibility
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
     setTimeout(() => {
       btn.innerHTML = `
