@@ -1,7 +1,10 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import { SignIn } from "@clerk/astro/components";
 ---
 
-<div class="flex min-h-screen items-center justify-center">
-  <SignIn />
-</div>
+<Layout title="Sign In">
+  <div class="flex min-h-screen items-center justify-center">
+    <SignIn />
+  </div>
+</Layout>
