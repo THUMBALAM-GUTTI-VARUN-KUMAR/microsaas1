@@ -4,7 +4,7 @@ export const prerender = false;
 
 // All supported language codes and their prefixes
 const LANG_CODES = ['es', 'ja', 'fr', 'de', 'pt', 'ko', 'it'];
-const BASE_URL = 'https://mediasavee.com';
+const BASE_URL = 'https://meadiasavee.com';
 
 // All static routes with SEO metadata
 const ROUTES: Record<string, { changefreq: string; priority: string }> = {

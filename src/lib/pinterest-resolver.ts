@@ -210,7 +210,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 8_500_000,
       sizeFormatted: '~8.5 MB',
       url: videoUrl,
-      downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=mediasavee_${pinId}_1080p.mp4`
+      downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=meadiasavee_${pinId}_1080p.mp4`
     });
 
     const video720Url = videoUrl.replace(/\/1080p\//, '/720p/').replace(/\/source\//, '/720p/');
@@ -224,7 +224,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 4_200_000,
       sizeFormatted: '~4.2 MB',
       url: video720Url,
-      downloadUrl: `/api/download?url=${encodeURIComponent(video720Url)}&filename=mediasavee_${pinId}_720p.mp4`
+      downloadUrl: `/api/download?url=${encodeURIComponent(video720Url)}&filename=meadiasavee_${pinId}_720p.mp4`
     });
 
     formats.push({
@@ -236,7 +236,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 1_800_000,
       sizeFormatted: '~1.8 MB',
       url: videoUrl,
-      downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=mediasavee_${pinId}_audio.mp3&type=audio`
+      downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=meadiasavee_${pinId}_audio.mp3&type=audio`
     });
   }
 
@@ -254,7 +254,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 2_400_000,
       sizeFormatted: '~2.4 MB',
       url: primaryImg,
-      downloadUrl: `/api/download?url=${encodeURIComponent(primaryImg)}&filename=mediasavee_${pinId}_original.${isGif ? 'gif' : 'jpg'}`
+      downloadUrl: `/api/download?url=${encodeURIComponent(primaryImg)}&filename=meadiasavee_${pinId}_original.${isGif ? 'gif' : 'jpg'}`
     });
 
     formats.push({
@@ -267,7 +267,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 1_200_000,
       sizeFormatted: '~1.2 MB',
       url: highRes736,
-      downloadUrl: `/api/download?url=${encodeURIComponent(highRes736)}&filename=mediasavee_${pinId}_736x.${isGif ? 'gif' : 'jpg'}`
+      downloadUrl: `/api/download?url=${encodeURIComponent(highRes736)}&filename=meadiasavee_${pinId}_736x.${isGif ? 'gif' : 'jpg'}`
     });
 
     formats.push({
@@ -280,7 +280,7 @@ export async function resolvePinterestMedia(rawUrl: string): Promise<ResolveResu
       sizeBytes: 950_000,
       sizeFormatted: '~950 KB',
       url: primaryImg,
-      downloadUrl: `/api/download?url=${encodeURIComponent(primaryImg)}&filename=mediasavee_${pinId}.webp`
+      downloadUrl: `/api/download?url=${encodeURIComponent(primaryImg)}&filename=meadiasavee_${pinId}.webp`
     });
   }
 

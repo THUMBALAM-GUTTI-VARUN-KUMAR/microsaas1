@@ -15,4 +15,4 @@ Allow: /ko/
 Allow: /it/
 
 # Sitemap location
-Sitemap: https://mediasavee.com/sitemap.xml
+Sitemap: https://meadiasavee.com/sitemap.xml

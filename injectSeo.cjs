@@ -5,7 +5,7 @@ let content = fs.readFileSync(uiPath, 'utf8');
 const seo = {
   "en": {
     "seo.h1": "Ultimate Pinterest Downloader for High-Quality Media",
-    "seo.p1": "In today's visually-driven digital landscape, finding the perfect inspiration often starts and ends on Pinterest. However, saving those inspirations for offline use, mood boards, or personal archives requires a robust and reliable tool. That is where our advanced <strong>pinterest downloader</strong> comes into play. mediasavee AI is meticulously engineered to provide a seamless, high-definition extraction experience for users globally. Whether you are an interior designer cataloging decor concepts, a fashion enthusiast curating styles, or a video editor seeking the highest quality clips, our platform stands as the premier destination to save Pinterest media in original quality.",
+    "seo.p1": "In today's visually-driven digital landscape, finding the perfect inspiration often starts and ends on Pinterest. However, saving those inspirations for offline use, mood boards, or personal archives requires a robust and reliable tool. That is where our advanced <strong>pinterest downloader</strong> comes into play. meadiasavee AI is meticulously engineered to provide a seamless, high-definition extraction experience for users globally. Whether you are an interior designer cataloging decor concepts, a fashion enthusiast curating styles, or a video editor seeking the highest quality clips, our platform stands as the premier destination to save Pinterest media in original quality.",
     "seo.p2": "The core philosophy behind our service is uncompromising quality combined with an effortless user interface. Traditional downloaders often compress files, serve excessive intrusive advertisements, or fail on specific formats like idea pins and carousels. Our tool circumvents these issues. By leveraging state-of-the-art backend extraction techniques, we ensure that every single download retains the creator's intended resolution and fidelity.",
     "seo.h2": "Comprehensive Video Pinterest Downloader Capabilities",
     "seo.p3": "One of the most sought-after features on our platform is our robust <strong>video pinterest downloader</strong> functionality. Videos on Pinterest range from quick DIY tutorials to stunning cinematic portfolios. Using our <strong>pinterest downloader video</strong> engine, you can effortlessly extract MP4 files directly to your local device without any quality degradation. We support up to 1080p and even 4K resolutions when available at the source. This makes us the go-to <strong>pinterest downloader hd</strong> solution for professionals who refuse to compromise on visual clarity.",
@@ -23,7 +23,7 @@ const seo = {
     "seo.s2": "Step 2:",
     "seo.s2d": "Click the \"Share\" icon and select \"Copy Link\". The URL will be saved to your clipboard.",
     "seo.s3": "Step 3:",
-    "seo.s3d": "Open mediasavee AI and paste the link directly into the main input field at the top of the page.",
+    "seo.s3d": "Open meadiasavee AI and paste the link directly into the main input field at the top of the page.",
     "seo.s4": "Step 4:",
     "seo.s4d": "Click the download button. Our system will immediately process the request, bypassing preview thumbnails to fetch the original source file.",
     "seo.s5": "Step 5:",
@@ -33,11 +33,11 @@ const seo = {
     "seo.h7": "Global Reach and Accessibility",
     "seo.p11": "Our mission is to democratize access to high-quality media extraction tools worldwide. By catering to varied search intents—whether you are looking for a <strong>baixar video pinterest downloader</strong> in Brazil, a <strong>pinterest downloader kostenlos</strong> in Germany, or simply searching for a <strong>pinterest downloader vídeo</strong> on your mobile phone—we've engineered our infrastructure to serve you globally with minimal latency. We utilize edge computing and globally distributed CDNs to ensure that the user interface loads instantly, regardless of your geographic location.",
     "seo.h8": "Conclusion",
-    "seo.p12": "In summary, mediasavee AI is not just another utility; it is a comprehensive, AI-enhanced platform built for the modern creator. By combining a premium user interface with unrivaled backend extraction power, we have redefined what users should expect from a <strong>pinterest downloader</strong>. Say goodbye to spam, low-resolution files, and broken links. Experience the fastest, safest, and most reliable way to save Pinterest media today. Whether you are transitioning from alternatives like <em>pinterest downloader pingrab</em> or <em>pinterest downloader savepin</em>, or discovering us for the first time, we guarantee an exceptional, streamlined downloading experience."
+    "seo.p12": "In summary, meadiasavee AI is not just another utility; it is a comprehensive, AI-enhanced platform built for the modern creator. By combining a premium user interface with unrivaled backend extraction power, we have redefined what users should expect from a <strong>pinterest downloader</strong>. Say goodbye to spam, low-resolution files, and broken links. Experience the fastest, safest, and most reliable way to save Pinterest media today. Whether you are transitioning from alternatives like <em>pinterest downloader pingrab</em> or <em>pinterest downloader savepin</em>, or discovering us for the first time, we guarantee an exceptional, streamlined downloading experience."
   },
   "es": {
     "seo.h1": "Descargador definitivo de Pinterest para medios de alta calidad",
-    "seo.p1": "En el panorama digital actual, impulsado por lo visual, encontrar la inspiración perfecta a menudo comienza y termina en Pinterest. Sin embargo, guardar esas inspiraciones requiere una herramienta sólida y confiable. Ahí es donde entra en juego nuestro avanzado <strong>descargador de pinterest</strong>. mediasavee AI está meticulosamente diseñado para proporcionar una experiencia de extracción de alta definición.",
+    "seo.p1": "En el panorama digital actual, impulsado por lo visual, encontrar la inspiración perfecta a menudo comienza y termina en Pinterest. Sin embargo, guardar esas inspiraciones requiere una herramienta sólida y confiable. Ahí es donde entra en juego nuestro avanzado <strong>descargador de pinterest</strong>. meadiasavee AI está meticulosamente diseñado para proporcionar una experiencia de extracción de alta definición.",
     "seo.p2": "La filosofía central detrás de nuestro servicio es la calidad sin compromisos combinada con una interfaz de usuario sin esfuerzo. Nuestra herramienta evita problemas como la compresión de archivos y la publicidad intrusiva mediante el aprovechamiento de técnicas de extracción backend de vanguardia.",
     "seo.h2": "Capacidades Integrales del Descargador de Video de Pinterest",
     "seo.p3": "Una de las características más buscadas en nuestra plataforma es nuestra robusta funcionalidad de <strong>descargador de video de pinterest</strong>. Puede extraer archivos MP4 directamente a su dispositivo local sin degradación de calidad.",
@@ -55,7 +55,7 @@ const seo = {
     "seo.s2": "Paso 2:",
     "seo.s2d": "Haz clic en el icono de compartir y selecciona \"Copiar Enlace\".",
     "seo.s3": "Paso 3:",
-    "seo.s3d": "Abre mediasavee AI y pega el enlace directamente en el campo de entrada principal.",
+    "seo.s3d": "Abre meadiasavee AI y pega el enlace directamente en el campo de entrada principal.",
     "seo.s4": "Paso 4:",
     "seo.s4d": "Haz clic en el botón de descarga. Nuestro sistema procesará la solicitud de inmediato.",
     "seo.s5": "Paso 5:",
@@ -65,7 +65,7 @@ const seo = {
     "seo.h7": "Alcance Global y Accesibilidad",
     "seo.p11": "Nuestra misión es democratizar el acceso a herramientas de extracción de medios de alta calidad en todo el mundo mediante CDN distribuidos globalmente.",
     "seo.h8": "Conclusión",
-    "seo.p12": "En resumen, mediasavee AI es una plataforma integral mejorada por IA. Diga adiós al spam, a los archivos de baja resolución y a los enlaces rotos. Experimente la forma más rápida y segura de guardar medios de Pinterest hoy."
+    "seo.p12": "En resumen, meadiasavee AI es una plataforma integral mejorada por IA. Diga adiós al spam, a los archivos de baja resolución y a los enlaces rotos. Experimente la forma más rápida y segura de guardar medios de Pinterest hoy."
   },
   "ja": {
     "seo.h1": "高品質メディアのための究極のPinterestダウンローダー",
@@ -87,7 +87,7 @@ const seo = {
     "seo.s2": "ステップ 2:",
     "seo.s2d": "共有アイコンをクリックし、「リンクをコピー」を選択します。",
     "seo.s3": "ステップ 3:",
-    "seo.s3d": "mediasavee AIを開き、入力フィールドにリンクを貼り付けます。",
+    "seo.s3d": "meadiasavee AIを開き、入力フィールドにリンクを貼り付けます。",
     "seo.s4": "ステップ 4:",
     "seo.s4d": "ダウンロードボタンをクリックします。システムが直ちに処理します。",
     "seo.s5": "ステップ 5:",
@@ -97,7 +97,7 @@ const seo = {
     "seo.h7": "グローバルなリーチとアクセシビリティ",
     "seo.p11": "私たちの使命は、世界中で高品質なメディア抽出ツールへのアクセスを民主化することです。",
     "seo.h8": "結論",
-    "seo.p12": "要約すると、mediasavee AIは現代のクリエイターのために構築されたプラットフォームです。スパムや低解像度ファイルに別れを告げ、最も安全な方法を体験してください。"
+    "seo.p12": "要約すると、meadiasavee AIは現代のクリエイターのために構築されたプラットフォームです。スパムや低解像度ファイルに別れを告げ、最も安全な方法を体験してください。"
   },
   "fr": {
     "seo.h1": "Téléchargeur Pinterest Ultime pour Médias de Haute Qualité",
@@ -119,7 +119,7 @@ const seo = {
     "seo.s2": "Étape 2 :",
     "seo.s2d": "Cliquez sur l’icône de partage et sélectionnez \"Copier le lien\".",
     "seo.s3": "Étape 3 :",
-    "seo.s3d": "Ouvrez mediasavee AI et collez le lien dans le champ de saisie.",
+    "seo.s3d": "Ouvrez meadiasavee AI et collez le lien dans le champ de saisie.",
     "seo.s4": "Étape 4 :",
     "seo.s4d": "Cliquez sur le bouton de téléchargement. Notre système traitera la demande.",
     "seo.s5": "Étape 5 :",
@@ -129,7 +129,7 @@ const seo = {
     "seo.h7": "Accessibilité Mondiale",
     "seo.p11": "Notre mission est de démocratiser l’accès à des outils d’extraction de haute qualité dans le monde entier.",
     "seo.h8": "Conclusion",
-    "seo.p12": "En résumé, mediasavee AI est une plateforme complète et améliorée par l’IA pour le créateur moderne. Dites adieu aux spams et aux fichiers de basse résolution."
+    "seo.p12": "En résumé, meadiasavee AI est une plateforme complète et améliorée par l’IA pour le créateur moderne. Dites adieu aux spams et aux fichiers de basse résolution."
   },
   "de": {
     "seo.h1": "Ultimativer Pinterest-Downloader für hochwertige Medien",
@@ -151,7 +151,7 @@ const seo = {
     "seo.s2": "Schritt 2:",
     "seo.s2d": "Klicken Sie auf das Teilen-Symbol und wählen Sie \"Link kopieren\".",
     "seo.s3": "Schritt 3:",
-    "seo.s3d": "Öffnen Sie mediasavee AI und fügen Sie den Link in das Eingabefeld ein.",
+    "seo.s3d": "Öffnen Sie meadiasavee AI und fügen Sie den Link in das Eingabefeld ein.",
     "seo.s4": "Schritt 4:",
     "seo.s4d": "Klicken Sie auf den Download-Button.",
     "seo.s5": "Schritt 5:",
@@ -161,7 +161,7 @@ const seo = {
     "seo.h7": "Globale Erreichbarkeit",
     "seo.p11": "Unsere Mission ist es, den Zugang zu hochwertigen Medienextraktionstools weltweit zu demokratisieren.",
     "seo.h8": "Fazit",
-    "seo.p12": "Zusammenfassend ist mediasavee AI eine umfassende Plattform für moderne Schöpfer. Verabschieden Sie sich von Spam und qualitativ minderwertigen Dateien."
+    "seo.p12": "Zusammenfassend ist meadiasavee AI eine umfassende Plattform für moderne Schöpfer. Verabschieden Sie sich von Spam und qualitativ minderwertigen Dateien."
   },
   "pt": {
     "seo.h1": "Downloader Definitivo do Pinterest para Mídia de Alta Qualidade",
@@ -183,7 +183,7 @@ const seo = {
     "seo.s2": "Passo 2:",
     "seo.s2d": "Clique no ícone de compartilhar e selecione \"Copiar Link\".",
     "seo.s3": "Passo 3:",
-    "seo.s3d": "Abra o mediasavee AI e cole o link no campo principal.",
+    "seo.s3d": "Abra o meadiasavee AI e cole o link no campo principal.",
     "seo.s4": "Passo 4:",
     "seo.s4d": "Clique no botão de download. Nosso sistema processará instantaneamente.",
     "seo.s5": "Passo 5:",
@@ -193,7 +193,7 @@ const seo = {
     "seo.h7": "Alcance Global",
     "seo.p11": "Nossa missão é democratizar o acesso a ferramentas de mídia de alta qualidade no mundo todo.",
     "seo.h8": "Conclusão",
-    "seo.p12": "Em resumo, o mediasavee AI é a plataforma definitiva para o criador moderno. Diga adeus ao spam e olá à qualidade."
+    "seo.p12": "Em resumo, o meadiasavee AI é a plataforma definitiva para o criador moderno. Diga adeus ao spam e olá à qualidade."
   },
   "ko": {
     "seo.h1": "고품질 미디어를 위한 최고의 Pinterest 다운로더",
@@ -215,7 +215,7 @@ const seo = {
     "seo.s2": "2단계:",
     "seo.s2d": "공유 아이콘을 클릭하고 \"링크 복사\"를 선택합니다.",
     "seo.s3": "3단계:",
-    "seo.s3d": "mediasavee AI를 열고 입력 필드에 링크를 붙여넣습니다.",
+    "seo.s3d": "meadiasavee AI를 열고 입력 필드에 링크를 붙여넣습니다.",
     "seo.s4": "4단계:",
     "seo.s4d": "다운로드 버튼을 클릭합니다. 시스템이 즉시 처리합니다.",
     "seo.s5": "5단계:",
@@ -225,7 +225,7 @@ const seo = {
     "seo.h7": "글로벌 접근성",
     "seo.p11": "우리의 사명은 전 세계적으로 고품질 미디어 추출 도구에 대한 접근을 민주화하는 것입니다.",
     "seo.h8": "결론",
-    "seo.p12": "요약하자면, mediasavee AI는 현대 크리에이터를 위한 포괄적인 플랫폼입니다. 스팸과 저해상도 파일에 작별을 고하세요."
+    "seo.p12": "요약하자면, meadiasavee AI는 현대 크리에이터를 위한 포괄적인 플랫폼입니다. 스팸과 저해상도 파일에 작별을 고하세요."
   },
   "it": {
     "seo.h1": "Il Miglior Downloader Pinterest per File Multimediali di Alta Qualità",
@@ -247,7 +247,7 @@ const seo = {
     "seo.s2": "Passo 2:",
     "seo.s2d": "Clicca sull’icona di condivisione e seleziona \"Copia Link\".",
     "seo.s3": "Passo 3:",
-    "seo.s3d": "Apri mediasavee AI e incolla il link nel campo principale.",
+    "seo.s3d": "Apri meadiasavee AI e incolla il link nel campo principale.",
     "seo.s4": "Passo 4:",
     "seo.s4d": "Clicca sul pulsante di download. Il nostro sistema elaborerà la richiesta.",
     "seo.s5": "Passo 5:",
@@ -257,7 +257,7 @@ const seo = {
     "seo.h7": "Accessibilità Globale",
     "seo.p11": "La nostra missione è democratizzare l’accesso a strumenti di estrazione multimediale di alta qualità in tutto il mondo.",
     "seo.h8": "Conclusione",
-    "seo.p12": "In sintesi, mediasavee AI è la piattaforma definitiva per i creatori moderni. Dì addio allo spam e ai file a bassa risoluzione."
+    "seo.p12": "In sintesi, meadiasavee AI è la piattaforma definitiva per i creatori moderni. Dì addio allo spam e ai file a bassa risoluzione."
   }
 };
 

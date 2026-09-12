@@ -8,7 +8,7 @@ const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500 MB
 export const GET: APIRoute = async ({ request }) => {
   const urlObj = new URL(request.url);
   const mediaUrl = urlObj.searchParams.get('url');
-  let filename = urlObj.searchParams.get('filename') || 'mediasavee_download';
+  let filename = urlObj.searchParams.get('filename') || 'meadiasavee_download';
   const typeParam = urlObj.searchParams.get('type') || '';
 
   if (!mediaUrl) {

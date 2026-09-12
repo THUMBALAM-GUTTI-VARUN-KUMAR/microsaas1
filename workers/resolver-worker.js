@@ -1,5 +1,5 @@
 /**
- * mediasavee AI - Cloudflare Worker Resolver
+ * meadiasavee AI - Cloudflare Worker Resolver
  * Deploy this script to Cloudflare Workers for global multi-edge resolution.
  * Set RESOLVER_WORKER_URL in your Astro environment to activate.
  */
@@ -59,7 +59,7 @@ export default {
           format: 'MP4',
           sizeFormatted: '~8.5 MB',
           url: videoUrl,
-          downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=mediasavee_${pinId}_1080p.mp4`
+          downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=meadiasavee_${pinId}_1080p.mp4`
         });
         formats.push({
           id: 'audio-mp3',
@@ -69,7 +69,7 @@ export default {
           format: 'MP3',
           sizeFormatted: '~1.8 MB',
           url: videoUrl,
-          downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=mediasavee_${pinId}_audio.mp3&type=audio`
+          downloadUrl: `/api/download?url=${encodeURIComponent(videoUrl)}&filename=meadiasavee_${pinId}_audio.mp3&type=audio`
         });
       }
 
@@ -82,7 +82,7 @@ export default {
           format: 'JPG',
           sizeFormatted: '~2.4 MB',
           url: originalImageUrl,
-          downloadUrl: `/api/download?url=${encodeURIComponent(originalImageUrl)}&filename=mediasavee_${pinId}_original.jpg`
+          downloadUrl: `/api/download?url=${encodeURIComponent(originalImageUrl)}&filename=meadiasavee_${pinId}_original.jpg`
         });
       }
 

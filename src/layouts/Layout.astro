@@ -17,16 +17,16 @@ const t = useTranslations(currentLang);
 const {
   title = t('meta.title'),
   description = t('meta.desc'),
-  canonicalUrl = "https://mediasavee.com",
-  ogImage = "https://mediasavee.com/og-image.png",
+  canonicalUrl = "https://meadiasavee.com",
+  ogImage = "https://meadiasavee.com/og-image.png",
   jsonLd
 } = Astro.props;
 
 const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "mediasavee AI",
-  "url": "https://mediasavee.com",
+  "name": "meadiasavee AI",
+  "url": "https://meadiasavee.com",
   "description": "Next-generation Pinterest media downloader for videos (MP4), images, GIFs, and audio with clean interface and fast download delivery.",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "All",
@@ -82,7 +82,7 @@ const finalSchema = jsonLd || defaultSchema;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="mediasavee" />
+    <meta name="apple-mobile-web-app-title" content="meadiasavee" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Google Fonts: Geist Sans & Geist Mono fallback -->
